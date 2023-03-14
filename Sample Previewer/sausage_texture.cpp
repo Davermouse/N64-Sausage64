@@ -2,7 +2,7 @@
 #include "Resources/MISSING.h"
 #include "sausage_texture.h"
 #include <wx/glcanvas.h>
-#include <GL/glu.h>
+#include <OpenGL/glu.h>
 
 
 /*==============================

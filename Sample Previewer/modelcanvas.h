@@ -7,7 +7,7 @@ typedef struct IUnknown IUnknown;
 #include <wx/wx.h>
 #include <wx/glcanvas.h>
 #include <wx/wxprec.h>
-#include <GL/glu.h>
+#include <OpenGL/glu.h>
 #include "Include/glm/glm/glm.hpp"
 #include "Include/glm/glm/ext/matrix_transform.hpp"
 

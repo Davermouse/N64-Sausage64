@@ -95,7 +95,7 @@ int main()
 
         // Render the scene
         scene_render();
-        gl_swap_buffers();
+       // gl_swap_buffers();
     }
 }
 
@@ -162,7 +162,7 @@ void setup_catherine()
     generate_texture((s64Texture*)mat_BackTex.data, &BackTex, catherine_textures[0]);
     generate_texture((s64Texture*)mat_BootTex.data, &BootTex, catherine_textures[1]);
     generate_texture((s64Texture*)mat_ChestTex.data, &ChestTex, catherine_textures[2]);
-    generate_texture((s64Texture*)mat_KnifeSheatheTex.data, &KnifeSheatheTex, catherine_textures[3]);
+   // generate_texture((s64Texture*)mat_KnifeSheatheTex.data, &KnifeSheatheTex, catherine_textures[3]);
     generate_texture((s64Texture*)mat_PantsTex.data, &PantsTex, catherine_textures[4]);
     generate_texture((s64Texture*)mat_CatherineFace.data, &FaceTex, catherine_textures[5]);
     generate_texture((s64Texture*)mat_CatherineBlink1Face.data, &FaceBlink1Tex, catherine_textures[6]);
@@ -276,6 +276,17 @@ void scene_tick()
 
 void scene_render()
 {
+    surface_t *disp;
+    RSP_WAIT_LOOP(200) {
+        if ((disp = display_lock())) {
+            break;
+        }
+    }
+
+    rdpq_attach(disp, NULL);
+
+    gl_context_begin();
+
     // Initialize the buffer with a color
     glClearColor(0.3f, 0.1f, 0.6f, 1.f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -293,4 +304,10 @@ void scene_render()
 
     // Render our model
     sausage64_drawmodel(&catherine);
+
+    glPopMatrix();
+
+    gl_context_end();
+
+    rdpq_detach_show();
 }

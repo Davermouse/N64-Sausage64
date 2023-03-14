@@ -16,7 +16,7 @@ CXXFLAGS ?=
 CPPFLAGS ?= 
 
 # Standard linker flags 
-LDFLAGS ?= -lGL -lGLU
+LDFLAGS ?= -framework GLUT -framework OpenGL 
 
 # Location and arguments of wx-config script 
 WX_CONFIG ?= wx-config

@@ -23,6 +23,7 @@ sausage64.z64: $(BUILD_DIR)/sausage64.dfs
 
 clean:
 	rm -rf $(BUILD_DIR) sausage64.z64
+	rm filesystem/*
 
 -include $(wildcard $(BUILD_DIR)/*.d)
 
